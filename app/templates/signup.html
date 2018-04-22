@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+
      <div class="login-form">
+       <img src = "../static/img/logo.png" id="logo">
+       <h2> Welcome to RecipEasy </h2>
+       <h5> Sharpen your cooking skills </h5>
         <div class="form-group ">
             <form action="" method="post">
                 {{ form.hidden_tag() }}
@@ -21,4 +25,12 @@
     <p class=error><strong>Error:</strong> {{ error }}
     {% endif %}
 
+<style>
+  body {
+    background-image: url({{ url_for('static', filename='img/login_background4.jpg') }});
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+</style>
 {% endblock %}

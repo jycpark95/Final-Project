@@ -34,6 +34,24 @@ h1 {
 	font-family: Helvetica;
 }
 
+h2 {
+  color: #C92228;
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Vibur', cursive;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+h5 {
+  color: #808080;
+  text-align: center;
+  font-family: 'Vibur', cursive;
+  font-family: Helvetica;
+  margin-bottom: 5vh;
+  font-size: 20px;
+}
+
 #headline {
 	background-color: rgba(0, 0, 0, 0.6);
 	background-
@@ -71,7 +89,7 @@ button {
 a {
 	font-family: Helvetica;
 	font-size: 14px;
-	color: #87CEFA;
+	color: #800000;
 	text-decoration: none;
 }
 
@@ -128,7 +146,7 @@ th, td {
 .login-form {
   width: 350px;
   padding: 40px 30px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -166,7 +184,7 @@ th, td {
 
 
 .log-btn {
-  background: rgba(0, 0, 0, 0.6);
+  background: #C92228;
   display: inline-block;
   width: 100%;
   font-size: 16px;
@@ -267,4 +285,12 @@ span {
 
 p#signup-link {
   text-align: center;
+}
+
+#logo {
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
