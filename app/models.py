@@ -14,11 +14,9 @@ class User(UserMixin):
 		self.password_hash = password_hash
 
 
-""" Takes a username as parameter and checks in the database. If the user exists,
-returns user object. If not, returns None.
-"""
+""" Verifies user in database. If exists, will return user object """
 def getUserByUsername(query):
-	with sql.connect('database.db') as connection:
+	with sql.connect('app.db') as connection:
 		connection.row_factory = sql.Row
 		cursor = connection.cursor()
 		cursor.execute("SELECT * FROM users WHERE username=?", (query,))
@@ -31,11 +29,9 @@ def getUserByUsername(query):
 			return user
 
 
-""" Takes a userID as parameter and checks in the database. If the user exists,
-returns user object. If not, returns None.
-"""
+""" Verifies UserID in the database. If the user exists, returns user object """
 def getUserByID(query):
-	with sql.connect('database.db') as connection:
+	with sql.connect('app.db') as connection:
 		connection.row_factory = sql.Row
 		cursor = connection.cursor()
 		cursor.execute("SELECT * FROM users WHERE user_id=?", (query,))
@@ -46,3 +42,9 @@ def getUserByID(query):
 			row = result[0]
 			user = User(query, row[1], row[2], row[3])
 			return user
+
+def create_user(username, email, password_hash):
+	with sql.connect('app.db') as connection:
+		cursor = connection.cursor()
+		cursor.execute("INSERT INTO users (username, email, password_hash) VALUES (?,?,?)",(username, email, password_hash))
+		connection.commit()

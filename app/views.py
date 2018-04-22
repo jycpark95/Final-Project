@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 @app.route('/')
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for(''))
+        return redirect(url_for('display_feed'))
     else:
         return redirect(url_for('login'))
 
@@ -31,7 +31,7 @@ def signup():
         # if username doesn't already exist
         password_hash = generate_password_hash(password)
         create_user(username, email, password_hash)
-        userID = getUserID(username)
+        userID = getUserByID(username)
         user = User(userID, username, email, password_hash)
         login_user(user)
         return redirect(url_for('index'))
@@ -46,10 +46,10 @@ def login():
         username = form.username.data
         password = form.password.data
         checkUser = getUserByUsername(username)
-        if checkUser is None or not check_password_hash(comparedUser.password_hash, password):
+        if checkUser is None or not check_password_hash(checkUser.password_hash, password):
             flash('Invalid username or password')
             return redirect(url_for('login'))
-        login_user(comparedUser, remember = form.remember_me.data)
+        login_user(checkUser, remember = form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('login.html', title='Log-In', form=form)
 
@@ -62,3 +62,10 @@ def logout():
 @login_manager.unauthorized_handler
 def unauthorized_handler():
     return redirect(url_for('login'))
+
+
+@app.route('/recipes_feed')
+@login_required
+def display_feed():
+    # trips = lookUpTripsForCurrentUser()
+    return render_template('feed.html')
