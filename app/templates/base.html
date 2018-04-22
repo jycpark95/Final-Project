@@ -6,15 +6,15 @@
 
 	<body>
     <div id = 'headline'>
-      {% if current_user.is_authenticated %}
+      <!-- {% if current_user.is_authenticated %} -->
       <button id='home'  onclick="window.location.href='{{ url_for( 'index') }}';" type="button">home
       </button>
       <button id='logout'  onclick="window.location.href='{{ url_for( 'logout') }}';" type="button">logout
       </button>
-      {% else %}
+      <!-- {% else %}
       <button id='signup'  onclick="window.location.href='{{ url_for( 'signup') }}';" type="button">signup</button>
       <button id='login' onclick="window.location.href='{{ url_for( 'login') }}';" type="action">login</button>
-      {% endif %}
+      {% endif %} -->
     </div>
     {% block content %}{% endblock %}
     {% with messages = get_flashed_messages() %}

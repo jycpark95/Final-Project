@@ -10,11 +10,11 @@
                 <p>
                     {{ form.password(placeholder = "Password") }}
                 </p>
-                <p>{{ form.submit(class = "log-btn") }}</p>
+                <p>
+                  {{ form.submit(class = "log-btn") }}
+                </p>
             </form>
-
-            <!-- <p> Don't have an account yet? Click the button below to sign up!</p>
-            <p>{{ form.submit(class = "log-btn") }}</p> -->
+            <p id="signup-link">Don't have an account? <a href="{{ url_for('signup', title='Sign-Up', form=form) }}">Sign up</a> right now!</p>
         </div>
     </div>
 {% endblock %}

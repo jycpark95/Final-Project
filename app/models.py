@@ -7,11 +7,12 @@ import sys
 
 class User(UserMixin):
 
-	def __init__(self, id_number, username, email, password_hash):
-		self.id = id_number;
-		self.username = username
-		self.email = email
-		self.password_hash = password_hash
+    def __init__(self, id_number, username, email, password_hash):
+    	self.id = id_number;
+    	self.username = username
+    	self.email = email
+    	self.password_hash = password_hash
+
 
 
 """ Verifies user in database. If exists, will return user object """
@@ -48,3 +49,7 @@ def create_user(username, email, password_hash):
 		cursor = connection.cursor()
 		cursor.execute("INSERT INTO users (username, email, password_hash) VALUES (?,?,?)",(username, email, password_hash))
 		connection.commit()
+
+@login_manager.user_loader
+def load_user(id):
+     return getUserByID(id)

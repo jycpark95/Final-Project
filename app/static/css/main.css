@@ -71,7 +71,7 @@ button {
 a {
 	font-family: Helvetica;
 	font-size: 14px;
-	color: white;
+	color: #87CEFA;
 	text-decoration: none;
 }
 
@@ -263,4 +263,8 @@ span {
   margin-right: 0px;
   background-color: rgba(255, 255, 255, 0);
   border-style: none;
+}
+
+p#signup-link {
+  text-align: center;
 }

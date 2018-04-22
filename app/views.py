@@ -11,8 +11,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 @app.route('/')
 def index():
     if current_user.is_authenticated:
+        print("LOG-IN")
         return redirect(url_for('display_feed'))
     else:
+        print("CAN'T LOG-IN")
         return redirect(url_for('login'))
 
 @app.route('/signup', methods=['GET','POST'])
@@ -33,7 +35,7 @@ def signup():
         create_user(username, email, password_hash)
         userID = getUserByID(username)
         user = User(userID, username, email, password_hash)
-        login_user(user)
+        login_user(user, remember = form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('signup.html', title='Sign-Up', form=form)
 
@@ -53,6 +55,11 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html', title='Log-In', form=form)
 
+@app.route('/protected')
+@login_required
+def protected():
+    return 'Logged in as: ' + current_user.username
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -64,8 +71,7 @@ def unauthorized_handler():
     return redirect(url_for('login'))
 
 
-@app.route('/recipes_feed')
+@app.route('/recipe_feed')
 @login_required
 def display_feed():
-    # trips = lookUpTripsForCurrentUser()
     return render_template('feed.html')
