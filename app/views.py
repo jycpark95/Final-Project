@@ -35,7 +35,8 @@ def signup():
         create_user(username, email, password_hash)
         userID = getUserByID(username)
         user = User(userID, username, email, password_hash)
-        login_user(user, remember = form.remember_me.data)
+        checkUser = getUserByUsername(username)
+        login_user(checkUser, remember = form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('signup.html', title='Sign-Up', form=form)
 
