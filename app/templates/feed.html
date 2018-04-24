@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/feed.css') }}">
+
 
 <div>
   Search for a recipe: <input id="query">
@@ -7,19 +9,13 @@
 
 </div>
 <br><br>
+<section >
+  <div id="recipes">
 
-<div class="result">
-  <h2>Search Results</h2>
-  <table id="recipes">
-    <b>
-    <th>Artwork</th>
-    <th>Title</th>
-    <th>Artist</th></b>
-  </table>
+  </div>
 
-</div>
+</section>
+
 
 </body>
-</html>
-
 {% endblock %}

@@ -8,16 +8,20 @@
 
 	<body>
     <div id = 'headline'>
-      <!-- {% if current_user.is_authenticated %} -->
-      <button id='home'  onclick="window.location.href='{{ url_for( 'index') }}';" type="button">home
+      {% if current_user.is_authenticated %}
+      <img src = "../../static/img/logo.png" id="logo_inside">
+      <button id='home'  onclick="window.location.href='{{ url_for( 'index') }}';" type="button">Home
       </button>
-      <button id='logout'  onclick="window.location.href='{{ url_for( 'logout') }}';" type="button">logout
+      <button id='saved'  onclick="window.location.href='{{ url_for( 'display_profile') }}';" type="button">Profile
       </button>
-      <!-- {% else %}
+      <button id='logout'  onclick="window.location.href='{{ url_for( 'logout') }}';" type="button">Logout
+      </button>
+    </div>
+      {% else %}
+      <img src = "../../static/img/logo.png" id="logo_inside">
       <button id='signup'  onclick="window.location.href='{{ url_for( 'signup') }}';" type="button">signup</button>
       <button id='login' onclick="window.location.href='{{ url_for( 'login') }}';" type="action">login</button>
-      {% endif %} -->
-    </div>
+      {% endif %}
     {% block content %}{% endblock %}
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -27,6 +31,5 @@
     {% endif %}
     {% endwith %}
   </body>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script> -->
   <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-waterfall.js') }}"></script>
-</html>

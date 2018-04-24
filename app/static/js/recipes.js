@@ -12,11 +12,12 @@ function getInput() {
 	return $('#query').val();
 }
 
-// Event handler for calling the SoundCloud API using the user's search query
+// Event handler for calling the API using the user's search query
 function callAPI(query) {
 	$.get("http://food2fork.com/api/search?key=a9a17bf634eb7ab8498dabf5969d0ea0",
 		{'q': query,
 		'limit': '200'},
+
 		function(data) {
 			console.log("Call API was called!");
 			processData(data);
@@ -24,49 +25,81 @@ function callAPI(query) {
 	);
 }
 
-// This function will go through the data object and take out the album cover, title, artists name and url (for playing)
-function processData(data){
-	//Clears the table after each submit for a new artists search.
-	// $('#bands').empty();
-	// var style_div = document.getElementsByClassName("waterfall");
-	var pin = document.getElementById("pin");
-	var new_recipe = document.createElement("ul");
-	// new_recipe.setAttribute("class" , "list-group")
-	var new_list = document.createElement("li");
-	// new_list.setAttribute("class" , "list-group-item")
-	var new_img = document.createElement("img");
-	
-	console.log(new_recipe)
-	console.log(new_list)
+//Should get list of ingredients for a specific Recipe using the ID.
+function getIngredients(data) {
+	$.get("http://food2fork.com/api/get?key=a9a17bf634eb7ab8498dabf5969d0ea0",
+		{'rId': data,
+		'limit': '200'},
+		function(data) {
+			console.log("Getting ingredients.");
+			process(data);
+		},'json'
+	);
+}
 
-	for (var i = 10; i >= 0; i--) {
-		// console.log(data)
+
+// $( "img" ).on( "click", function() {
+//     console.log("Recipe was clicked!");
+//       getIngredients(getRecipeId())
+// });
+
+$( "img" ).click(function() {
+    console.log("Recipe was clicked!");
+      getIngredients(getRecipeId())
+});
+
+
+function getRecipeId() {
+	console.log("Getting recipe ID.");
+	var recipeID = $(this).attr("alt");
+	console.log(recipeID);
+	return recipeID
+}
+
+function process(data) {
+	for (var i = 5; i >= 0; i--) {
+		console.log(data)
+		console.log(data.recipes[i].ingredients)
 		var title = data.recipes[i]['title'];
 		var food_img = data.recipes[i]['image_url'];
-		if (food_img == null) {
-			food_img = 'img/1.jpg'
-		}
-		// new_img.src = food_img
-		new_list.appendChild(new_img).src=food_img
-		new_recipe.appendChild(new_list);
-		// new_recipe.appendChild(pin);
-		// document.body.appendChild(new_recipe);
-		$("div.waterfall").append(new_recipe);
-		$('#recipes').append("<tr><td> <img src='" + food_img +"'></td>");
+		var recipe_ingredients = data.recipes[i]['ingredients'];
 	}
-	
-		// var ingredients = data.recipes[i]['ingredients'];
-		// var recipe_link = data.recipes[i]['source_url'];
+}
+
+// This function will go through the data object and take out the image and recipe link.
+function processData(data){
+	//Clears the table after each submit for a new artists search.
+	$('#recipes').empty();
+	// var style_div = document.getElementsByClassName("waterfall");
+	var pin = document.getElementById("pin");
+	var new_recipe = document.createElement("div");
+	new_recipe.setAttribute("class" , "food-item")
+	var new_img = document.createElement("img");
+
+	console.log(new_recipe)
 
 
-		
-		// new_recipe.setAttribute("class" , "list-group-item")
-		
+	var htmlElements = "";
+
+	for (var i = 29; i >= 0; i--) {
+		var title = data.recipes[i]['title'];
+		var food_img = data.recipes[i]['image_url'];
+		var recipe_link = data.recipes[i]['source_url'];
+		var recipe_id = data.recipes[i]['recipe_id'];
+
+   		htmlElements += '<div class="food-item"><a href="'+ recipe_link +'"target="_blank"><img id="' + recipe_id + '" src="' + food_img + '"></div>';
+   		$( "img" ).click(function() {
+    	console.log("Recipe was clicked!");
+      	getIngredients(getRecipeId())
+});
 
 
-		// $('.list-group').append("<li class='list-group-item'><img src='" + food_img + "'/></a></li>");
-		// $('#recipes').append("<tr><td> <img src='" + food_img +"'></td>");
-		// $('#recipes').append("<tr><td> <img src='" + food_img +"'></td><td>" + title + "</td><td>" + ingredients + "</td><td>");
+	}
+
+	var container = document.getElementById("recipes");
+	// var container = document.getElementsByTagName("section");
+	console.log(container);
+	container.innerHTML = htmlElements;
 	}
 
 
