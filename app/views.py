@@ -21,7 +21,6 @@ def index():
 def signup():
     form = SignUpForm()
     if form.validate_on_submit():
-        first_name = form.first_name.data
         username = form.username.data
         email = form.email.data
         password = form.password.data
@@ -33,9 +32,9 @@ def signup():
 
         # if username doesn't already exist
         password_hash = generate_password_hash(password)
-        create_user(first_name, last_name, username, email, password_hash)
+        create_user(username, email, password_hash)
         userID = getUserByID(username)
-        user = User(userID, first_name, last_name, username, email, password_hash)
+        user = User(userID, username, email, password_hash)
         checkUser = getUserByUsername(username)
         login_user(checkUser, remember = form.remember_me.data)
         return redirect(url_for('index'))
