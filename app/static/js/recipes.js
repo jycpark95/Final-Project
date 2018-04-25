@@ -4,15 +4,24 @@ console.log("Doc has loaded!");
 
 
 $("#submit").click( function() {
-      // console.log("Submit button was clicked!");
+      console.log("Submit button was clicked!");
       $('#query').val('');
       callAPI(getInput());
     });
 
+  //Show query input to user
+// $(document).ready(function() {
+//   $('#query').change(function() {
+//     $('#displayQuery').html('Search results for: ' + "'" + $('#query').val() + "'");
+//   });
+// });
+
 $(document).keypress(function(e) {
     if(e.which == 13) {
     // console.log("You pressed enter!");
+      $('#displayQuery').html('Search results for: ' + "'" + $('#query').val() + "'");
       callAPI(getInput());
+      $('#query').val("");
     }
 });
 function getInput() {
@@ -104,18 +113,10 @@ function processData(data){
 
 });
 
-//Show query input to user
-$(document).ready(function() {
-  $('#query').change(function() {
-    $('#displayQuery').html('Search results for: ' + "'" + $('#query').val() + "'");
-  });
-});
 
-$('#submit')[0].reset();
-
-// Move saved recipes to separate list
+// Move saved recipes to separate list <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FIX <<<<<<<<<<<
 $('.thumbtack').on('click', function() {
-  console.log("Clicking on thumbtack");
+  alert("Recipe is saved!");
   var row = $(this).parents('tr').clone().find('td:last').remove().end();
   row.append('<td><input type = "image" src="./static/img/trash.png" class="delete" /></td></tr>');
   $('savedRecipes').prepend($(row));
