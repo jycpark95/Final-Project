@@ -92,7 +92,7 @@ function processData(data){
 		var recipe_link = data.recipes[i]['source_url'];
 		var recipe_id = data.recipes[i]['recipe_id'];
 
-   		htmlElements += '<div class="ind_recipe"> <tr> <td><img id="food_image" id="' + recipe_id + '" src="' + food_img + '"></td><td><a href="'+ recipe_link + '"target="_blank"></td> <td><img class="link" src="./static/img/link2.png" title="See recipe" style="width:20px !important;height:20px !important; border:none"></a></td> <td><button class="thumbtack"><img src="./static/img/tack1.png" style="width:20px !important;height:20px !important; border:none; !important;justify-content:right;"></button>' + title + '</td></tr></div>';
+   		htmlElements += '<div class="ind_recipe"> <tr><td><img id="food_image" id="' + recipe_id + '" src="' + food_img + '"><td><p class="title">'+title+'</p></td></td><td><a href="'+ recipe_link + '"target="_blank"></td><td><img class="link" src="./static/img/link2.png" title="See recipe" style="width:20px !important;height:20px !important; border:none"></a></td> <td><button class="thumbtack" title="Save recipe" ><img src="./static/img/tack1.png" style="width:20px !important;height:20px !important; border:none; !important;justify-content:right;"></button></td></tr></div>';
 
    		// htmlElements += '<div class="food-item"><img id="' + recipe_id + '" src="' + food_img + '"><br><a href="'+ recipe_link +'"target="_blank"><b>Recipe Link</b></a><br><br><a href=./templates/base.html>Save to profile.</a></div>';
 
@@ -105,15 +105,17 @@ function processData(data){
 
 	}
 
+  // Move saved recipes to separate list
+  $(document).on('click', 'div.ind_recipe', function() {
+  	var food_clicked = $(this)
+  	var thumb_image = $(this).children("button.thumbtack");
+  	thumb_image.click(function () {
+  	$('#savedRecipes').prepend(food_clicked);
+  	thumb_image.remove();
+  	food_clicked.append('<button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;"></button></tr>');
+    });
+  });
+
+  $(document).tooltip({show: null});
+
 });
-
-
-// Move saved recipes to separate list
-$(document).on('click', '.thumbtack', function() {
-  // console.log($(this).parents('tr').clone().find('img:lastChild'));
-  // var row = $(this).parents('tr').clone().find('img:lastChild').remove().end();
-  // row.append('<td><button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;justify-content:right;"></button></td></tr>');
-  var row = $(this).closest('div').html();
-  console.log(row);
-  $('#savedRecipes').prepend($(row));
-})

@@ -15,13 +15,12 @@
   -moz-column-gap:      0px;
   column-count:         5;
   column-gap:           4px;
-
 }
 
 #savedRecipes {
   /* Prevent vertical gaps */
   line-height: -5;
-  margin-left: 8px;
+  margin-left: 5px;
 
   -webkit-column-count: 5;
   -webkit-column-gap:   0px;
@@ -29,13 +28,47 @@
   -moz-column-gap:      0px;
   column-count:         5;
   column-gap:           4px;
+  display: inline-block;
 
 }
 
-img#savedRecipes {
-  width: 95% !important;
-  height: auto !important;
-  margin-bottom: 2px;
+#savedRecipes img {
+    width: 95%;
+    height: 30%;
+    margin-bottom: 2px;
+    display: inline-block;
+    object-fit: cover;
+    margin-bottom: 3px;
+}
+
+@media (max-width: 1200px) {
+
+  #savedRecipes {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #savedRecipes {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #savedRecipes {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #savedRecipes {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
 }
 
 p {
@@ -47,7 +80,6 @@ p {
   /* Just in case there are inline attributes */
   width: 95% !important;
   height: auto !important;
-  margin-bottom: 2px;
 
 }
 
@@ -124,7 +156,6 @@ img.search_icon {
 
 .ind_recipe {
   padding-bottom: 10px;
-  position: relative;
 }
 
 h2#displayQuery {
@@ -136,4 +167,16 @@ h2#displayQuery {
 
 button.thumbtack {
   margin-top: 2px;
+}
+
+p.title {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  margin: 0px;
+  width: 95%;
+  height:25px;
+  background-color: #808080;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

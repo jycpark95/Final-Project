@@ -11,6 +11,7 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   font-family: arial;
+  -webkit-column-break-inside: avoid;
 }
 
 html {
@@ -317,5 +318,5 @@ h5#all_recipes {
 }
 
 .ind_recipe {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
