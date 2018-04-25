@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <span id="profilename">{{ name }}</span>
-<div id="recentcontainer">
-    <h5> Most recent saved recipes </h5>
-  </div>
-</div>
 
-<div id="allrecipes">
-  <h2> All saved recipes </h2>
-</div>
+<section>
+  <h5 id="recent_recipes"> Recently saved recipes </h5>
+    <div class="recent_recipes">
+    </div>
+  </section>
+
+<section>
+  <h5 id="all_recipes"> Saved recipes </h5>
+    <div class="all_recipes">
+    </div>
+  </section>
 {% endblock %}

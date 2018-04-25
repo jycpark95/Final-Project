@@ -2,18 +2,21 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/feed.css') }}">
 
-
-<div>
-  Search for a recipe: <input id="query">
-  <button id="submit" name="button">SUBMIT</button>
-
+<div class = "icon_grid">
+  <img src = "../../static/img/cupcake.png" class="search_icon">
+  <img src = "../../static/img/sandwich.png" class="search_icon">
+  <img src = "../../static/img/turkey.png" class="search_icon">
 </div>
+
+<div class="searchcontainer">
+  <input type="text" id="query" placeholder="Search for a recipe">
+  <button id="submit" name="button">Search</button>
+</div>
+
 <br><br>
 <section >
   <div id="recipes">
-
   </div>
-
 </section>
 
 

@@ -8,6 +8,7 @@
 
 	<body>
     <div id = 'headline'>
+      <h1 id="product"> RecipEasy </h1>
       {% if current_user.is_authenticated %}
       <img src = "../../static/img/logo.png" id="logo_inside">
       <button id='home'  onclick="window.location.href='{{ url_for( 'index') }}';" type="button">Home
