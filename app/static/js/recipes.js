@@ -9,12 +9,6 @@ $("#submit").click( function() {
       callAPI(getInput());
     });
 
-  //Show query input to user
-// $(document).ready(function() {
-//   $('#query').change(function() {
-//     $('#displayQuery').html('Search results for: ' + "'" + $('#query').val() + "'");
-//   });
-// });
 
 $(document).keypress(function(e) {
     if(e.which == 13) {
@@ -114,10 +108,12 @@ function processData(data){
 });
 
 
-// Move saved recipes to separate list <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FIX <<<<<<<<<<<
-$('.thumbtack').on('click', function() {
-  alert("Recipe is saved!");
-  var row = $(this).parents('tr').clone().find('td:last').remove().end();
-  row.append('<td><input type = "image" src="./static/img/trash.png" class="delete" /></td></tr>');
-  $('savedRecipes').prepend($(row));
+// Move saved recipes to separate list
+$(document).on('click', '.thumbtack', function() {
+  // console.log($(this).parents('tr').clone().find('img:lastChild'));
+  // var row = $(this).parents('tr').clone().find('img:lastChild').remove().end();
+  // row.append('<td><button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;justify-content:right;"></button></td></tr>');
+  var row = $(this).closest('div').html();
+  console.log(row);
+  $('#savedRecipes').prepend($(row));
 })

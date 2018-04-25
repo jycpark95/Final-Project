@@ -18,6 +18,26 @@
 
 }
 
+#savedRecipes {
+  /* Prevent vertical gaps */
+  line-height: -5;
+  margin-left: 8px;
+
+  -webkit-column-count: 5;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    5;
+  -moz-column-gap:      0px;
+  column-count:         5;
+  column-gap:           4px;
+
+}
+
+img#savedRecipes {
+  width: 95% !important;
+  height: auto !important;
+  margin-bottom: 2px;
+}
+
 p {
   margin: 10px;
 }
@@ -99,7 +119,7 @@ img.search_icon {
   font-size: 15px;
   border: none;
   color: white;
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 .ind_recipe {
