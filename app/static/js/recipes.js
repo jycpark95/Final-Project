@@ -102,9 +102,3 @@ function processData(data){
 	}
 
 });
-
-$(function () {
-  $('#submit').on('click', function () {
-    $('<h2>Search results for: </h2>').appendTo('#recipes');
-  });
-});
