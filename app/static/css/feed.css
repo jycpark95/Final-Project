@@ -6,8 +6,8 @@
 
 #recipes {
   /* Prevent vertical gaps */
-  line-height: -5
-  ;
+  line-height: -5;
+  margin-left: 8px;
 
   -webkit-column-count: 5;
   -webkit-column-gap:   0px;
@@ -95,7 +95,7 @@ img.search_icon {
 #submit {
   height: 32px;
   width: 100px;
-  background-color: #FF4500;
+  background-color: #C92228;
   font-size: 15px;
   border: none;
   color: white;
@@ -104,4 +104,16 @@ img.search_icon {
 
 .ind_recipe {
   padding-bottom: 10px;
+  position: relative;
+}
+
+h2#displayQuery {
+  margin-bottom: 20px;
+  text-align: left;
+  margin-top: -25px;
+  margin-left: 10px;
+}
+
+button.thumbtack {
+  margin-top: 2px;
 }

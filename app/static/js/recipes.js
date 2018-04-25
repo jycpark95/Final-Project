@@ -4,18 +4,19 @@ console.log("Doc has loaded!");
 
 
 $("#submit").click( function() {
-      console.log("Submit button was clicked!");
+      // console.log("Submit button was clicked!");
+      $('#query').val('');
       callAPI(getInput());
-
     });
+
 $(document).keypress(function(e) {
     if(e.which == 13) {
-    console.log("You pressed enter!");
+    // console.log("You pressed enter!");
       callAPI(getInput());
     }
 });
 function getInput() {
-	console.log("Get input was called!");
+	// console.log("Get input was called!");
 	return $('#query').val();
 }
 
@@ -26,7 +27,7 @@ function callAPI(query) {
 		'limit': '200'},
 
 		function(data) {
-			console.log("Call API was called!");
+			// console.log("Call API was called!");
 			processData(data);
 		},'json'
 	);
@@ -38,7 +39,7 @@ function getIngredients(data) {
 		{'rId': data,
 		'limit': '200'},
 		function(data) {
-			console.log("Getting ingredients.");
+			// console.log("Getting ingredients.");
       // searchResults();
 			process(data);
 		},'json'
@@ -46,21 +47,21 @@ function getIngredients(data) {
 }
 
 	$( ".food-item" ).click(function() {
-    	console.log("Recipe was clicked!");
+    	// console.log("Recipe was clicked!");
       	getIngredients(getRecipeId())
 	});
 
 function getRecipeId() {
-	console.log("Getting recipe ID.");
+	// console.log("Getting recipe ID.");
 	var recipeID = $(this).attr("alt");
-	console.log(recipeID);
+	// console.log(recipeID);
 	return recipeID
 }
 
 function process(data) {
 	for (var i = 5; i >= 0; i--) {
-		console.log(data)
-		console.log(data.recipes[i].ingredients)
+		// console.log(data)
+		// console.log(data.recipes[i].ingredients)
 		var title = data.recipes[i]['title'];
 		var food_img = data.recipes[i]['image_url'];
 		var recipe_ingredients = data.recipes[i]['ingredients'];
@@ -88,7 +89,7 @@ function processData(data){
 		var recipe_link = data.recipes[i]['source_url'];
 		var recipe_id = data.recipes[i]['recipe_id'];
 
-   		htmlElements += '<div><img id="food_image" id="' + recipe_id + '" src="' + food_img + '"></div><div><a href="'+ recipe_link +'"target="_blank"><img class="link" src="./static/img/link.png" style="width:20px !important;height:20px !important; border:none"></a></div>';
+   		htmlElements += '<div class="ind_recipe"> <tr> <td><img id="food_image" id="' + recipe_id + '" src="' + food_img + '"></td><td><a href="'+ recipe_link + '"target="_blank"></td> <td><img class="link" src="./static/img/link2.png" title="See recipe" style="width:20px !important;height:20px !important; border:none"></a></td> <td><button class="thumbtack"><img src="./static/img/tack1.png" style="width:20px !important;height:20px !important; border:none; !important;justify-content:right;"></button></td></tr></div>';
 
    		// htmlElements += '<div class="food-item"><img id="' + recipe_id + '" src="' + food_img + '"><br><a href="'+ recipe_link +'"target="_blank"><b>Recipe Link</b></a><br><br><a href=./templates/base.html>Save to profile.</a></div>';
 
@@ -96,9 +97,26 @@ function processData(data){
 
 	var container = document.getElementById("recipes");
 	// var container = document.getElementsByTagName("section");
-	console.log(container);
+	// console.log(container);
 	container.innerHTML = htmlElements;
 
 	}
 
 });
+
+//Show query input to user
+$(document).ready(function() {
+  $('#query').change(function() {
+    $('#displayQuery').html('Search results for: ' + "'" + $('#query').val() + "'");
+  });
+});
+
+$('#submit')[0].reset();
+
+// Move saved recipes to separate list
+$('.thumbtack').on('click', function() {
+  console.log("Clicking on thumbtack");
+  var row = $(this).parents('tr').clone().find('td:last').remove().end();
+  row.append('<td><input type = "image" src="./static/img/trash.png" class="delete" /></td></tr>');
+  $('savedRecipes').prepend($(row));
+})
