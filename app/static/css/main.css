@@ -23,15 +23,26 @@ html {
 
 body {
 	margin: 0px;
+  padding-bottom: 50px;
 }
 
 h1 {
 	color: black;
 	text-align: center;
-	font-family: 'Vibur', cursive;
 	font-size: 40px;
 	margin-top: 10vh;
 	font-family: Helvetica;
+}
+
+h1#product {
+  font-family: Helvetica;
+  text-align: center;
+  color: #C92228;
+  font-size: 20px;
+  margin-top: 0px;
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 5px;
 }
 
 h2 {
@@ -220,7 +231,16 @@ th, td {
 	display: inline-block;
 }
 
-img {
+/* img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  vertical-align: middle;
+} */
+
+img#logo_inside {
+  border: none;
   width: 20px;
   height: 20px;
   margin-right: 10px;
@@ -228,20 +248,16 @@ img {
   vertical-align: middle;
 }
 
-img#logo_inside {
-  border: none;
-}
-
-span {
+/* span {
   font-size: 14px;
-}
+} */
 
-.inspect {
+/* .inspect {
   vertical-align: middle;
   margin-right: 0px;
   background-color: rgba(255, 255, 255, 0);
   border-style: none;
-}
+} */
 
 p#signup-link {
   text-align: center;
@@ -268,24 +284,6 @@ p#signup-link {
   /* width: 600px; */
   padding: 50px 30px;
 }
-
-/* #recentbox {
-  width: 100%;
-  padding: 40px 30px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  margin: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 200px;
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  border: 5px solid #C92228;
-} */
 
 #profilename {
   color:  #C92228;
@@ -318,13 +316,6 @@ h5#all_recipes {
   padding-bottom: 100px;
 }
 
-h1#product {
-  font-family: Helvetica;
-  text-align: center;
-  color: #C92228;
-  font-size: 20px;
-  margin-top: 0px;
-  position: absolute;
-  padding-top: 10px;
-  padding-left: 5px;
+.ind_recipe {
+  padding-bottom: 10px;
 }

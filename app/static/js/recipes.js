@@ -2,7 +2,7 @@ $( document ).ready(function() {
 //Api- key = 'a9a17bf634eb7ab8498dabf5969d0ea0'
 console.log("Doc has loaded!");
 
- 
+
 $("#submit").click( function() {
       console.log("Submit button was clicked!");
       callAPI(getInput());
@@ -39,6 +39,7 @@ function getIngredients(data) {
 		'limit': '200'},
 		function(data) {
 			console.log("Getting ingredients.");
+      // searchResults();
 			process(data);
 		},'json'
 	);
@@ -75,11 +76,12 @@ function foodClicked() {
 // This function will go through the data object and take out the image and recipe link.
 function processData(data){
 	//Clears the table after each submit for a new artists search.
-	$('#recipes').empty();
+	$('#recipes').empty().append(
+    '<div class="recipe_grid"><h2> Search results for: </h2></div>'
+  );
 
 
 	var htmlElements = "";
-
 	for (var i = 29; i >= 0; i--) {
 		var title = data.recipes[i]['title'];
 		var food_img = data.recipes[i]['image_url'];
@@ -89,7 +91,7 @@ function processData(data){
    		htmlElements += '<div><img id="food_image" id="' + recipe_id + '" src="' + food_img + '"></div><div><a href="'+ recipe_link +'"target="_blank"><img class="link" src="./static/img/link.png" style="width:20px !important;height:20px !important; border:none"></a></div>';
 
    		// htmlElements += '<div class="food-item"><img id="' + recipe_id + '" src="' + food_img + '"><br><a href="'+ recipe_link +'"target="_blank"><b>Recipe Link</b></a><br><br><a href=./templates/base.html>Save to profile.</a></div>';
-   		
+
 	}
 
 	var container = document.getElementById("recipes");
@@ -99,4 +101,10 @@ function processData(data){
 
 	}
 
+});
+
+$(function () {
+  $('#submit').on('click', function () {
+    $('<h2>Search results for: </h2>').appendTo('#recipes');
+  });
 });
