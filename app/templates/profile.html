@@ -14,9 +14,9 @@
       <table id="saved_recipes">
       {% for recipe in recipes %}
         <tr>
-          <td> {{ recipe[1] }} </td>
-          <td> {{ recipe[2] }} </td>
-          <td> {{ recipe[3] }} </td>
+          <td class="title"> {{ recipe[1] }} </td>
+          <td id="food_img"> {{ recipe[2] }} </td>
+          <td class="recipeLink"> {{ recipe[3] }} </td>
         </tr>
         {% endfor %}
       </table>
