@@ -11,10 +11,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 @app.route('/')
 def index():
     if current_user.is_authenticated:
-        print("LOG-IN")
         return redirect(url_for('display_feed'))
     else:
-        print("CAN'T LOG-IN")
         return redirect(url_for('login'))
 
 @app.route('/signup', methods=['GET','POST'])
@@ -81,9 +79,9 @@ def display_feed():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def display_profile():
-    id = request.args.get('recipe_id')
-    print(id)
-    title = request.args.get('recipe_title')
-    link = request.args.get('recipe_link')
-    insert_recipe(id, title, link)
+    id = request.values.get('id')
+    title = request.values.get('title')
+    link = request.values.get('link')
+    print(id, title, link)
+    # insert_recipe(id, title, link)
     return render_template('profile.html', name=current_user.username)
