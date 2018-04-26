@@ -92,7 +92,7 @@ function processData(data){
 		var recipe_link = data.recipes[i]['source_url'];
 		var recipe_id = data.recipes[i]['recipe_id'];
 
-   		htmlElements += '<div class="ind_recipe"> <tr><td><img id="food_image" name="' + recipe_id + '" src="' + food_img + '"><td><p class="title">'+title+'</p></td></td><td><a href="'+ recipe_link + '"target="_blank"></td><td><img class="link" src="./static/img/link2.png" title="See recipe" style="width:20px !important;height:20px !important; border:none"></a></td> <td><button class="thumbtack" title="Save recipe" ><img src="./static/img/tack1.png" style="width:20px !important;height:20px !important; border:none; !important;justify-content:right;"></button></td></tr></div>';
+   		htmlElements += '<div class="ind_recipe"><tr><td><img id="food_image" alt="' + recipe_id + '" src="' + food_img + '"><td><p class="title">'+title+'</p></td></td><td><a href="'+ recipe_link + '"target="_blank"></td><td><img class="link" src="./static/img/link2.png" title="See recipe" style="width:20px !important;height:20px !important; border:none"></a></td> <td><button class="thumbtack" title="Save recipe" ><img src="./static/img/tack1.png" style="width:20px !important;height:20px !important; border:none; !important;justify-content:right;"></button></td></tr></div>';
 
 	}
 
@@ -108,8 +108,7 @@ function processData(data){
     var food_clicked = $(this);
     var title = $(this).text();
     var link = this.getElementsByTagName('a')[0].getAttribute('href');
-    var id = this.getElementById('food_img').getAttribute('name');
-    console.log(id);
+    var id = $(this).children(':first').attr('alt');
     var thumb_image = $(this).children("button.thumbtack");
     thumb_image.click(function () {
     // $('#savedRecipes').prepend(food_clicked);
