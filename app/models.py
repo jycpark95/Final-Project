@@ -53,3 +53,10 @@ def create_user(username, email, password_hash):
 @login_manager.user_loader
 def load_user(id):
      return getUserByID(id)
+
+
+def insert_recipe(recipe_id, recipe_name, recipe_link):
+    with sql.connect('app.db') as connection:
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO recipes (recipe_id, recipe_name, recipe_link) VALUES (?,?,?)", (recipe_id, recipe_name, recipe_link))
+        connection.commit()

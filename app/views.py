@@ -78,7 +78,12 @@ def display_feed():
     return render_template('feed.html')
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def display_profile():
+    id = request.args.get('recipe_id')
+    print(id)
+    title = request.args.get('recipe_title')
+    link = request.args.get('recipe_link')
+    insert_recipe(id, title, link)
     return render_template('profile.html', name=current_user.username)
