@@ -88,8 +88,10 @@ def display_feed():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def display_profile():
+    print("Hello")
     # if request.method == 'POST':
     recipes = loadSavedRecipes()
+    print(recipes)
     # for recipe in recipes:
     #     print("Hello: ", recipe)
     return render_template('profile.html', name=current_user.username, recipes=recipes)

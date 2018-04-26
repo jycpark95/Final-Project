@@ -56,7 +56,6 @@ def load_user(id):
 
 
 def insert_recipe(recipe_id, recipe_name, img_link, recipe_link):
-    print(recipe_id)
     with sql.connect('app.db') as connection:
         cursor = connection.cursor()
         cursor.execute("INSERT INTO recipes (recipe_id, recipe_name, img_link, recipe_link) VALUES (?,?,?,?)", (recipe_id, recipe_name, img_link, recipe_link))
@@ -66,7 +65,7 @@ def insert_recipe(recipe_id, recipe_name, img_link, recipe_link):
 def loadSavedRecipes():
     with sql.connect('app.db') as connection:
         cursor = connection.cursor()
-        result = cursor.execute("SELECT recipes.recipe_id, recipes.recipe_name, recipes.img_link, recipes.recipe_link FROM recipes JOIN saved_recipes ON recipes.r_id = saved_recipes.r_id WHERE saved_recipes.user_id =?", (current_user.id)).fetchall()
+        result = cursor.execute("SELECT recipes.recipe_id, recipes.recipe_name, recipes.img_link, recipes.recipe_link FROM recipes JOIN saved_recipes ON recipes.recipe_id = saved_recipes.r_id WHERE saved_recipes.user_id =?", (current_user.id)).fetchall()
         return result
 
 def insert_savedRecipes(user_id, r_id):
