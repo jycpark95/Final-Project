@@ -2,7 +2,8 @@ DROP TABLE if EXISTS recipes;
 CREATE TABLE recipes (
   recipe_id integer PRIMARY KEY,
   recipe_name text NOT NULL,
-  recipe_link
+  img_link text NOT NULL,
+  recipe_link text NOT NULL
 );
 
 DROP TABLE if EXISTS users;
