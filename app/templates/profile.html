@@ -17,8 +17,8 @@
   <h5 id="all_recipes"> Check out all your saved recipes! </h5>
   <br><br><br>
     <div id="list_recipes">
+      {% for recipe in recipes %}
       <div class="ind_recipe">
-        {% for recipe in recipes %}
         <tr>
           <td>
             <p class="title">{{ recipe[1] }}</p>
@@ -28,7 +28,7 @@
           </td>
           <td>
             <a class="recipeLink" href="{{ recipe[3] }}" target="_blank">
-              <img class="link" src="../static/img/link2.png" style="width:20px !important;height:20px !important; border:none;"">
+              <img class="link" src="../static/img/link2.png" style="width:20px !important;height:20px !important; border:none;">
             </a>
           </td>
           <td>
@@ -36,17 +36,7 @@
             </button>
           </td>
         </tr>
-      </div>'
-        <!-- <thead>
-          <th data-field="title">Your recipe</th>
-          <th data-field="img">Looks delicious</th>
-          <th data-field="link">Find your recipe</th>
-        </thead> -->
-        <!-- <tr>
-          <td class="title"> {{ recipe[1] }} </td>
-          <td id="food_img"> {{ recipe[2] }} </td>
-          <td class="recipeLink"> {{ recipe[3] }} </td>
-        </tr> -->
+      </div>
         {% endfor %}
       </table>
     </div>
