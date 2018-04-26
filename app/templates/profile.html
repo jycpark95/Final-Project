@@ -2,22 +2,26 @@
 {% block content %}
 <span id="profilename">{{ name }}</span>
 
-<section>
+<!-- <section>
   <h5 id="recent_recipes"> Recently saved recipes </h5>
     <div class="recent_recipes">
     </div>
-  </section>
+  </section> -->
 
 <section>
   <h5 id="all_recipes"> Saved recipes </h5>
-    <div class="all_recipes">
+    <div id="list_recipes">
+      <table id="saved_recipes">
+      {% for recipe in recipes %}
+        <tr>
+          <td> {{ recipe[1] }} </td>
+          <td> {{ recipe[2] }} </td>
+          <td> {{ recipe[3] }} </td>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
-  </section>
-
-<section>
-  <h2 id="displaySaved">Saved results</h2>
-  <div id="savedRecipes">
-  </div>
 </section>
+
 
 {% endblock %}

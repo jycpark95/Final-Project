@@ -79,11 +79,15 @@ def display_feed():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def display_profile():
-    if request.method == 'POST':
-        id = request.values.get('id')
-        title = request.values.get('title')
-        img_link = request.values.get('img_link')
-        link = request.values.get('link')
-        print(id, title, img_link, link)
-        insert_recipe(id, title, img_link, link)
-        return render_template('profile.html', name=current_user.username)
+    # if request.method == 'POST':
+    id = request.values.get('id')
+    title = request.values.get('title')
+    img_link = request.values.get('img_link')
+    link = request.values.get('link')
+    print(id)
+    insert_recipe(id, title, img_link, link)
+    # print("User ID: ", current_user.id)
+    insert_savedRecipes(current_user.id, id)
+    recipes = loadSavedRecipes()
+    return render_template('profile.html', name=current_user.username, recipes=recipes)
+    # return redirect('/profile')
