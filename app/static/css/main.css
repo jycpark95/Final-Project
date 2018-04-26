@@ -331,7 +331,10 @@ h5#recent_recipes {
 
 
 div#list_recipes {
-  display: inline-block;
+  /* display: inline-block; */
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.4);
+  width: 99%;
 }
 
 h5#all_recipes {
@@ -358,22 +361,14 @@ img.search_icon {
   justify-content: center;
   padding: 20px;
 }
-/* thead {
-  background-color: #C92228;
-  color: white;
-}
 
-th {
-  height: 15px;
-  text-align: center;
-} */
 
 p.title {
   text-align: center;
   font-size: 18px;
   color: white;
   margin: 0px;
-  width: 25%;
+  width: 95%;
   height:25px;
   background-color: #808080;
   overflow: hidden;
@@ -393,8 +388,8 @@ p.title {
 
 #list_recipes img  {
   /* Just in case there are inline attributes */
-  width: 95% !important;
-  height: auto !important;
+  width: 95%;
+  height: 200px;
 
 }
 
