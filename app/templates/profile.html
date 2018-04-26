@@ -9,15 +9,43 @@
   </section> -->
 
 <section>
-  <h5 id="all_recipes"> Saved recipes </h5>
+  <div class = "icon_grid">
+    <img src = "../../static/img/cupcake.png" class="search_icon">
+    <img src = "../../static/img/sandwich.png" class="search_icon">
+    <img src = "../../static/img/turkey.png" class="search_icon">
+  </div>
+  <h5 id="all_recipes"> Check out all your saved recipes! </h5>
+  <br><br><br>
     <div id="list_recipes">
-      <table id="saved_recipes">
-      {% for recipe in recipes %}
+      <div class="ind_recipe">
+        {% for recipe in recipes %}
         <tr>
+          <td>
+            <p class="title">{{ recipe[1] }}</p>
+          </td>
+          <td>
+            <img id = "food_img" src="{{ recipe[2] }}">
+          </td>
+          <td>
+            <a class="recipeLink" href="{{ recipe[3] }}" target="_blank">
+              <img class="link" src=src="./static/img/link2.png" title="See recipe"></a>
+          </td>
+          <td>
+            <button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;">
+            </button>
+          </td>
+        </tr>
+      </div>'
+        <!-- <thead>
+          <th data-field="title">Your recipe</th>
+          <th data-field="img">Looks delicious</th>
+          <th data-field="link">Find your recipe</th>
+        </thead> -->
+        <!-- <tr>
           <td class="title"> {{ recipe[1] }} </td>
           <td id="food_img"> {{ recipe[2] }} </td>
           <td class="recipeLink"> {{ recipe[3] }} </td>
-        </tr>
+        </tr> -->
         {% endfor %}
       </table>
     </div>
