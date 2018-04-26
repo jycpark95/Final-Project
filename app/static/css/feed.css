@@ -35,10 +35,9 @@
 #savedRecipes img {
     width: 95%;
     height: 30%;
-    margin-bottom: 2px;
     display: inline-block;
     object-fit: cover;
-    margin-bottom: 3px;
+    margin-bottom: 0px;
 }
 
 @media (max-width: 1200px) {
@@ -155,7 +154,7 @@ img.search_icon {
 }
 
 .ind_recipe {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 h2#displayQuery {
@@ -179,4 +178,17 @@ p.title {
   background-color: #808080;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+img.link {
+  margin-left: 70px;
+}
+
+button.thumbtack {
+  margin-left: 70px;
+}
+
+button.trash {
+  margin-top: 2px;
+  margin-left: 70px;
 }

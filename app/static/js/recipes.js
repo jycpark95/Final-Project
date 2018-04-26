@@ -107,15 +107,18 @@ function processData(data){
 
   // Move saved recipes to separate list
   $(document).on('click', 'div.ind_recipe', function() {
-  	var food_clicked = $(this)
-  	var thumb_image = $(this).children("button.thumbtack");
-  	thumb_image.click(function () {
-  	$('#savedRecipes').prepend(food_clicked);
-  	thumb_image.remove();
-  	food_clicked.append('<button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;"></button></tr>');
+    var food_clicked = $(this);
+    var title = $(this).text();
+    var link = this.getElementsByTagName('a');
+    console.log(link);
+    var thumb_image = $(this).children("button.thumbtack");
+    thumb_image.click(function () {
+    // $('#savedRecipes').prepend(food_clicked);
+    // thumb_image.remove();
+    // food_clicked.append('<button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;"></button></tr>');
+      // var clicked = $(this).parent(".title");
+
     });
   });
-
-  $(document).tooltip({show: null});
 
 });
