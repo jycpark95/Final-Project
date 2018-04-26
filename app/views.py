@@ -70,9 +70,18 @@ def unauthorized_handler():
     return redirect(url_for('login'))
 
 
-@app.route('/recipe_feed')
+@app.route('/recipe_feed', methods=['GET', 'POST'])
 @login_required
 def display_feed():
+    if request.method == 'POST':
+        id = request.values.get('id')
+        title = request.values.get('title')
+        img_link = request.values.get('img_link')
+        link = request.values.get('link')
+        insert_recipe(id, title, img_link, link)
+        # print("User ID: ", current_user.id)
+        insert_savedRecipes(current_user.id, id)
+        return render_template('feed.html')
     return render_template('feed.html')
 
 
@@ -80,14 +89,8 @@ def display_feed():
 @login_required
 def display_profile():
     # if request.method == 'POST':
-    id = request.values.get('id')
-    title = request.values.get('title')
-    img_link = request.values.get('img_link')
-    link = request.values.get('link')
-    print(id)
-    insert_recipe(id, title, img_link, link)
-    # print("User ID: ", current_user.id)
-    insert_savedRecipes(current_user.id, id)
     recipes = loadSavedRecipes()
+    # for recipe in recipes:
+    #     print("Hello: ", recipe)
     return render_template('profile.html', name=current_user.username, recipes=recipes)
     # return redirect('/profile')

@@ -56,6 +56,7 @@ def load_user(id):
 
 
 def insert_recipe(recipe_id, recipe_name, img_link, recipe_link):
+    print(recipe_id)
     with sql.connect('app.db') as connection:
         cursor = connection.cursor()
         cursor.execute("INSERT INTO recipes (recipe_id, recipe_name, img_link, recipe_link) VALUES (?,?,?,?)", (recipe_id, recipe_name, img_link, recipe_link))

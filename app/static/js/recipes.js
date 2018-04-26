@@ -117,7 +117,7 @@ function processData(data){
     // $('#savedRecipes').prepend(food_clicked);
     // thumb_image.remove();
     // food_clicked.append('<button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;"></button></tr>');
-      $.post("/profile", { id:id, title:title, img_link:img_link, link:link}
+      $.post("/recipe_feed", { id:id, title:title, img_link:img_link, link:link}
     ).done(function() {})
     });
   });
