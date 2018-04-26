@@ -110,14 +110,14 @@ function processData(data){
     var title = $(this).text();
     var link = this.getElementsByTagName('a')[0].getAttribute('href');
     var id = $(this).children(':first').attr('alt');
-
+    var img_link = $(this).children(':first').attr('src');
+    // console.log(img_link);
     var thumb_image = $(this).children("button.thumbtack");
     thumb_image.click(function () {
     // $('#savedRecipes').prepend(food_clicked);
     // thumb_image.remove();
     // food_clicked.append('<button class="trash"><img src="./static/img/trash.png" style="width:20px !important;height:20px !important; border:none;!important;"></button></tr>');
-      console.log(title, id, link)
-      $.post("/profile",{ id:id, title:title, link:link}
+      $.post("/profile", { id:id, title:title, img_link:img_link, link:link}
     ).done(function() {})
     });
   });

@@ -1,6 +1,7 @@
 DROP TABLE if EXISTS recipes;
 CREATE TABLE recipes (
-  recipe_id integer PRIMARY KEY,
+  r_id integer PRIMARY KEY,
+  recipe_id integer NOT NULL,
   recipe_name text NOT NULL,
   img_link text NOT NULL,
   recipe_link text NOT NULL
@@ -13,6 +14,7 @@ CREATE TABLE users (
   email text NOT NULL,
   password_hash text NOT NULL
 );
+
 -- DROP TABLE if EXISTS saved_recipes;
 -- CREATE TABLE saved_recipes (
 --   saved_recipes_id integer PRIMARY KEY,
