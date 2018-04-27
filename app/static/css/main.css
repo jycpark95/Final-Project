@@ -422,3 +422,12 @@ p.title {
   column-count:         1;
   }
 }
+
+img.link {
+  margin-left: 70px;
+}
+
+button.trash {
+  margin-top: 2px;
+  margin-left: 70px;
+}

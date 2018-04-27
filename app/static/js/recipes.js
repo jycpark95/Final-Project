@@ -106,12 +106,11 @@ function processData(data){
   // Move saved recipes to separate list
   $(document).on('click', 'div.ind_recipe', function() {
     var food_clicked = $(this);
-
+    console.log();
     var title = $(this).text();
     var link = this.getElementsByTagName('a')[0].getAttribute('href');
     var id = $(this).children(':first').attr('alt');
     var img_link = $(this).children(':first').attr('src');
-    // console.log(img_link);
     var thumb_image = $(this).children("button.thumbtack");
     thumb_image.click(function () {
     // $('#savedRecipes').prepend(food_clicked);
@@ -122,4 +121,14 @@ function processData(data){
     });
   });
 
+  $(document).on('click', '.trash', function() {
+    var id = $(this).parent().children(':first');
+    console.log(id);
+    // $.post('delete-recipe', { id:id})
+    //   .done(function() {})
+
+    var row = $(this).parent().remove();
+	// console.log(row)
+	// console.log("It has been deleted"
+  });
 });

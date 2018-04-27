@@ -73,3 +73,12 @@ def insert_savedRecipes(user_id, r_id):
         cursor = connection.cursor()
         cursor.execute("INSERT INTO saved_recipes (user_id, r_id) VALUES (?,?)", (user_id, r_id))
         connection.commit()
+
+def delete_recipe(r_id):
+    with sql.connect('app.db') as connection:
+        cursor1 = connection.cursor();
+        cursor1.execute("DELETE FROM recipes WHERE recipe_id = ?", (r_id,))
+        connection.commit()
+        # cursor2 = connection.cursor();
+        # cursor2.execute("DELETE FROM saved_recipes where r_id = ?", (r_id))
+        # connection.commit()

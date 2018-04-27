@@ -88,7 +88,6 @@ def display_feed():
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def display_profile():
-    print("Hello")
     # if request.method == 'POST':
     recipes = loadSavedRecipes()
     print(recipes)
@@ -96,3 +95,11 @@ def display_profile():
     #     print("Hello: ", recipe)
     return render_template('profile.html', name=current_user.username, recipes=recipes)
     # return redirect('/profile')
+
+@app.route('/delete-recipe', methods=['GET', 'POST'])
+@login_required
+def deleteRecipe():
+    # r_id = request.values.get('id')
+    print("HELLO")
+    # delete_recipe(r_id)
+    return redirect('/profile')
