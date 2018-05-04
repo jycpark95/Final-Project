@@ -39,7 +39,7 @@
     margin-bottom: 0px;
 } */
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
 
   #savedRecipes {
   -moz-column-count:    4;
@@ -67,7 +67,7 @@
   -webkit-column-count: 1;
   column-count:         1;
   }
-}
+} */
 
 p {
   margin: 10px;
@@ -185,10 +185,5 @@ img.link {
 }
 
 button.thumbtack {
-  margin-left: 70px;
-}
-
-button.trash {
-  margin-top: 2px;
   margin-left: 70px;
 }
